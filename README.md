@@ -41,9 +41,9 @@ when adding following quantities/products to the shopping cart:
 
 the checkout will print:
 ```
-3 x Toblerone 100g (id=#1, price=CHF 2.25/x) = CHF 6.75
-5 l Milk (id=#2, price=USD 1.85/l) = CHF 8.42
-0.613 kg Broccoli (id=#3, price=EUR 0.80/kg) = CHF 0.53
+3 x Toblerone 100g (id=1, price=CHF 2.25/x) = CHF 6.75
+5 l Milk (id=2, price=USD 1.85/l) = CHF 8.42
+0.613 kg Broccoli (id=3, price=EUR 0.80/kg) = CHF 0.53
 Total: CHF 15.70
 ```
 
@@ -51,8 +51,8 @@ Total: CHF 15.70
 
 Implementations are available for:
 
-* **Java**
-* **Javascript**
+* [Java](./java) (Java 11)
+* [Javascript](./javascript) (ECMAScript 6 / 2015)
 
 Implementations are planned also for:
 
@@ -60,6 +60,25 @@ Implementations are planned also for:
 * **Typescript**
 * **Rust**
 * **Groovy**
+
+### Javascript
+
+No compilation required, as this is a script language.<br>
+To run it from the command prompt, install [Node.js](https://nodejs.org), and run the program from the command line: 
+```bash
+node shopping-cart.js
+```
+
+### Java
+
+The Java implementation requires **Java 11**. Compile it with [Maven](https://maven.apache.org/):
+```bash
+mvn
+```
+This will build an executable **JAR** (Java Archive) in the `target` folder. Execute it from the command line with: 
+```bash
+java -jar target/shopping-cart-1.0.0-SNAPSHOT.jar
+```
 
 ## Reference implementation
 
@@ -76,7 +95,7 @@ class Product {
     }
 
     toString() {
-        return `${this.name} (id=#${this.id}, price=${this.price}/${this.unit})`;
+        return `${this.name} (id=${this.id}, price=${this.price}/${this.unit})`;
     }
 }
 ```
@@ -104,9 +123,11 @@ class ShoppingCart {
     }
 
     remove(product) {
-        var existing = this.items.find(i => i.product.id == product.id);
-        if (existing) {
-            this.items.splice(this.items.indexOf(existing), 1);
+        if (product) {
+            var existing = this.items.find(i => i.product.id == product.id);
+            if (existing) {
+                this.items.splice(this.items.indexOf(existing), 1);
+            }
         }
         return this;
     }
@@ -121,11 +142,12 @@ class ShoppingCart {
 class Checkout {
 
     constructor(exchangeRateService) {
-        this.exchangeRateService = exchangeRateService;
+        this.exchangeRateService =  Check.required('exchangeRateService', exchangeRateService);
         this.localCurrency = this.exchangeRateService.baseCurrency;
     }
 
     checkout(shoppingCart) {
+        Check.required('shoppingCart', shoppingCart);
         var total = 0;
         for (var item of shoppingCart.items) {
             var price = new CurrencyAmount(item.product.price.currency, item.amount * item.product.price.amount);
@@ -176,6 +198,11 @@ class ExchangeRateService {
         };
     }
 
+    convert(currencyAmount, toCurrency) {
+        return new CurrencyAmount(toCurrency,
+            currencyAmount.amount * this.exchangeRate(currencyAmount.currency, toCurrency));
+    }
+
     exchangeRate(fromCurrency, toCurrency) {
         if (fromCurrency == toCurrency) {
             return 1;
@@ -195,11 +222,6 @@ class ExchangeRateService {
             throw `unsupported currency: ${currency}`;
         }
         return exchangeRate;
-    }
-
-    convert(currencyAmount, toCurrency) {
-        return new CurrencyAmount(toCurrency,
-            currencyAmount.amount * this.exchangeRate(currencyAmount.currency, toCurrency));
     }
 }
 ```
@@ -240,7 +262,7 @@ Test scenario:
 
 ```javascript
 var toblerone = new Product(1, 'Toblerone 100g', new CurrencyAmount('CHF', 2.25), Unit.QUANTITY);
-var milk = new Product(2, 'Milk', new CurrencyAmount("USD", 1.85), Unit.LITER);
+var milk = new Product(2, 'Milk', new CurrencyAmount('USD', 1.85), Unit.LITER);
 var broccoli = new Product(3, 'Broccoli', new CurrencyAmount('EUR', 0.80), Unit.KILOGRAM);
 
 var shoppingCart = new ShoppingCart()
@@ -248,7 +270,7 @@ var shoppingCart = new ShoppingCart()
     .add(2, milk)
     .add(3, milk)
     .add(0.450, broccoli)
-    .add(0.163, broccoli)
+    .add(0.163, broccoli);
 
 const exchangeRateService = new ExchangeRateService();
 const checkout = new Checkout(exchangeRateService);

@@ -8,10 +8,9 @@ class Product {
     }
 
     toString() {
-        return `${this.name} (id=#${this.id}, price=${this.price}/${this.unit})`;
+        return `${this.name} (id=${this.id}, price=${this.price}/${this.unit})`;
     }
 }
-
 class ShoppingCart {
 
     constructor() {
@@ -34,9 +33,11 @@ class ShoppingCart {
     }
 
     remove(product) {
-        var existing = this.items.find(i => i.product.id == product.id);
-        if (existing) {
-            this.items.splice(this.items.indexOf(existing), 1);
+        if (product) {
+            var existing = this.items.find(i => i.product.id == product.id);
+            if (existing) {
+                this.items.splice(this.items.indexOf(existing), 1);
+            }
         }
         return this;
     }
@@ -45,15 +46,15 @@ class ShoppingCart {
         return `${this.items.length} items in the shopping cart`;
     }
 }
-
 class Checkout {
 
     constructor(exchangeRateService) {
-        this.exchangeRateService = exchangeRateService;
+        this.exchangeRateService =  Check.required('exchangeRateService', exchangeRateService);
         this.localCurrency = this.exchangeRateService.baseCurrency;
     }
 
     checkout(shoppingCart) {
+        Check.required('shoppingCart', shoppingCart);
         var total = 0;
         for (var item of shoppingCart.items) {
             var price = new CurrencyAmount(item.product.price.currency, item.amount * item.product.price.amount);
@@ -64,13 +65,11 @@ class Checkout {
         console.log("Total: " + new CurrencyAmount(this.localCurrency, total));
     }
 }
-
 const Unit = {
     QUANTITY: 'x',
     KILOGRAM: 'kg',
     LITER: 'l'
 }
-
 class CurrencyAmount {
 
     constructor(currency, amount) {
@@ -86,7 +85,6 @@ class CurrencyAmount {
         return this.currency + " " + this.amount.toFixed(2);
     }
 }
-
 class ExchangeRateService {
 
     constructor() {
@@ -96,6 +94,11 @@ class ExchangeRateService {
             'USD': 0.9103,
             'GBP': 1.1794
         };
+    }
+
+    convert(currencyAmount, toCurrency) {
+        return new CurrencyAmount(toCurrency,
+            currencyAmount.amount * this.exchangeRate(currencyAmount.currency, toCurrency));
     }
 
     exchangeRate(fromCurrency, toCurrency) {
@@ -118,13 +121,7 @@ class ExchangeRateService {
         }
         return exchangeRate;
     }
-
-    convert(currencyAmount, toCurrency) {
-        return new CurrencyAmount(toCurrency,
-            currencyAmount.amount * this.exchangeRate(currencyAmount.currency, toCurrency));
-    }
 }
-
 class Check {
     static required(property, value, ...validators) {
         if (value == null || value == undefined) {
@@ -156,7 +153,7 @@ class Check {
 }
 
 var toblerone = new Product(1, 'Toblerone 100g', new CurrencyAmount('CHF', 2.25), Unit.QUANTITY);
-var milk = new Product(2, 'Milk', new CurrencyAmount("USD", 1.85), Unit.LITER);
+var milk = new Product(2, 'Milk', new CurrencyAmount('USD', 1.85), Unit.LITER);
 var broccoli = new Product(3, 'Broccoli', new CurrencyAmount('EUR', 0.80), Unit.KILOGRAM);
 
 var shoppingCart = new ShoppingCart()
@@ -164,7 +161,7 @@ var shoppingCart = new ShoppingCart()
     .add(2, milk)
     .add(3, milk)
     .add(0.450, broccoli)
-    .add(0.163, broccoli)
+    .add(0.163, broccoli);
 
 const exchangeRateService = new ExchangeRateService();
 const checkout = new Checkout(exchangeRateService);
