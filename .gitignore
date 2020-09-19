@@ -1,2 +1,6 @@
-/shoppingcart.iml
-/.idea/
+# Ignore IDE files
+**/.idea/
+**/*.iml
+
+# Ignore build directories
+**/target/
