@@ -52,6 +52,7 @@ Total: CHF 15.70
 Implementations are available for:
 
 * [Java](./java) (Java 11)
+* [Kotlin](./kotlin)
 * [Javascript](./javascript) (ECMAScript 6 / 2015)
 
 Implementations are planned also for:
@@ -60,14 +61,6 @@ Implementations are planned also for:
 * **Typescript**
 * **Rust**
 * **Groovy**
-
-### Javascript
-
-No compilation required, as this is a script language.<br>
-To run it from the command prompt, install [Node.js](https://nodejs.org), and run the program from the command line: 
-```bash
-node shopping-cart.js
-```
 
 ### Java
 
@@ -78,6 +71,25 @@ mvn
 This will build an executable **JAR** (Java Archive) in the `target` folder. Execute it from the command line with: 
 ```bash
 java -jar target/shopping-cart-1.0.0-SNAPSHOT.jar
+```
+
+### Kotlin
+
+Compile it with [Maven](https://maven.apache.org/):
+```bash
+mvn
+```
+This will build an executable **JAR** (Java Archive) in the `target` folder. Execute it from the command line with: 
+```bash
+java -jar target/shopping-cart-1.0.0-SNAPSHOT.jar
+```
+
+### Javascript
+
+No compilation required, as this is a script language.<br>
+To run it from the command prompt, install [Node.js](https://nodejs.org), and run the program from the command line: 
+```bash
+node shopping-cart.js
 ```
 
 ## Reference implementation
