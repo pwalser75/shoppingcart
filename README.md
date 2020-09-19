@@ -5,6 +5,19 @@
 The idea is to have one and the same example program written in multiple programming languages, as a reference
 on how to implement some common concepts with each programming language.
 
+Implementations are available for:
+
+* [Java](./java) (Java 11)
+* [Kotlin](./kotlin)
+* [Javascript](./javascript) (ECMAScript 6 / 2015)
+
+Implementations are planned also for:
+
+* **Kotlin**
+* **Typescript**
+* **Rust**
+* **Groovy**
+
 ## Domain / Requirements
 
 Exercise: **create a shopping cart, fill it with products, and go to the checkout to have it print a receipt.**
@@ -48,19 +61,6 @@ Total: CHF 15.70
 ```
 
 ## Programming Languages
-
-Implementations are available for:
-
-* [Java](./java) (Java 11)
-* [Kotlin](./kotlin)
-* [Javascript](./javascript) (ECMAScript 6 / 2015)
-
-Implementations are planned also for:
-
-* **Kotlin**
-* **Typescript**
-* **Rust**
-* **Groovy**
 
 ### Java
 
