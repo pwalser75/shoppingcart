@@ -9,8 +9,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
+import static java.math.BigDecimal.ONE;
 import static java.math.MathContext.DECIMAL64;
-import static java.math.RoundingMode.HALF_UP;
 
 public class ExchangeRateServiceImpl implements ExchangeRateService {
 
@@ -30,17 +30,16 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
 
     private BigDecimal exchangeRate(String fromCurrency, String toCurrency) {
         if (Objects.equals(fromCurrency, toCurrency)) {
-            return BigDecimal.ONE;
+            return ONE;
         }
         if (fromCurrency.equals(BASE_CURRENCY)) {
-            return BigDecimal.ONE.divide(requireExchangeRate(toCurrency), DECIMAL64);
+            return ONE.divide(requireExchangeRate(toCurrency), DECIMAL64);
         }
         if (toCurrency.equals(BASE_CURRENCY)) {
             return requireExchangeRate(fromCurrency);
         }
         return exchangeRate(fromCurrency, BASE_CURRENCY)
-                .multiply(exchangeRate(BASE_CURRENCY, toCurrency))
-                .setScale(2, HALF_UP);
+                .multiply(exchangeRate(BASE_CURRENCY, toCurrency));
     }
 
     private BigDecimal requireExchangeRate(String currency) {

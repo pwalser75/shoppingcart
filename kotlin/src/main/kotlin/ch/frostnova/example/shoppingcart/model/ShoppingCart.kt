@@ -20,8 +20,7 @@ class ShoppingCart {
         return this
     }
 
-    //TODO: return as immutable map
-    fun getItems(): MutableMap<Product, BigDecimal> {
-        return items
+    fun getItems(): Map<Product, BigDecimal> {
+        return Collections.unmodifiableMap(items)
     }
 }

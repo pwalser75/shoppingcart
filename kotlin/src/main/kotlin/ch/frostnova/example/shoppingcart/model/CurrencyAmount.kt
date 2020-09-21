@@ -7,7 +7,7 @@ import java.math.BigDecimal
 import java.math.RoundingMode.HALF_UP
 import java.util.*
 
-class CurrencyAmount(currency: String, amount: BigDecimal) {
+class CurrencyAmount(currency: String, amount: BigDecimal, test: String = "Hello") {
 
     val currency: String = required("currency", currency, format("[A-Z]{3}", "must be a currency code"))
     val amount: BigDecimal = required("amount", amount, min(0)).setScale(2, HALF_UP)

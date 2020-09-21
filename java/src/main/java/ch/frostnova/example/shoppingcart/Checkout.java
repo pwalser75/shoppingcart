@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.Map;
 
 import static ch.frostnova.example.shoppingcart.util.Check.required;
+import static java.math.BigDecimal.ZERO;
 
 public class Checkout {
 
@@ -22,7 +23,7 @@ public class Checkout {
     public void checkout(ShoppingCart shoppingCart) {
         required("shoppingCart", shoppingCart);
 
-        var total = BigDecimal.ZERO;
+        var total = ZERO;
         Map<Product, BigDecimal> items = shoppingCart.getItems();
         for (Product product : items.keySet()) {
             var amount = items.get(product);
