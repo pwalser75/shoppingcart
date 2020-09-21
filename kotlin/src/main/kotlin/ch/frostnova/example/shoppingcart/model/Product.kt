@@ -8,7 +8,7 @@ class Product : Entity<Long?> {
     constructor()
 
     constructor(id: Long, name: String, price: CurrencyAmount, unit: Unit = Unit.QUANTITY) {
-        setId(id)
+        this.id = id
         this.name = name
         this.price = price
         this.unit = unit

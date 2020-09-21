@@ -5,11 +5,6 @@ import java.util.*
 abstract class Entity<ID> {
     
     var id: ID? = null
-        private set
-
-    fun setId(id: ID) {
-        this.id = id
-    }
 
     override fun equals(o: Any?): Boolean {
         if (this === o) {

@@ -1,9 +1,22 @@
 # Shopping Cart
 
-**One programming exercise in many programming languages.** 
+**A polyglot programming exercise in many programming languages.** 
 
 The idea is to have one and the same example program written in multiple programming languages, as a reference
-on how to implement some common concepts with each programming language.
+on how to implement some common concepts with each featured programming language.
+
+Concepts to show (if supported by the language):
+- **Domain modelling** of mutable (Entity) and immutable (Value Object) data models
+- **Composite** data models
+- **Enumeration** data type
+- **Object orientation**
+- **Functional programming**
+- Service contract interface and implementation
+- Calculus with constrained numbers (2-digits precision)
+- Utility functions
+- **Exception handling**
+
+## Programming languages
 
 Implementations are available for:
 
@@ -13,9 +26,8 @@ Implementations are available for:
 
 Implementations are planned also for:
 
-* **Kotlin**
 * **Typescript**
-* **Rust**
+* **Rust** (under construction)
 * **Groovy**
 
 ## Domain / Requirements
@@ -60,7 +72,7 @@ the checkout will print:
 Total: CHF 15.70
 ```
 
-## Programming Languages
+## Build and Run
 
 ### Java
 
@@ -90,6 +102,25 @@ No compilation required, as this is a script language.<br>
 To run it from the command prompt, install [Node.js](https://nodejs.org), and run the program from the command line: 
 ```bash
 node shopping-cart.js
+```
+
+### Rust
+
+Install Rust: https://www.rust-lang.org/tools/install
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+Build (debug executable, for release use the `--release` option):
+```bash
+cargo build
+```
+
+To run, just execute the binary: `./target/debug/shopping-cart` (or `./target/release/shopping-cart` for the release version).
+
+You can also directly build and run with cargo:
+```bash
+cargo run
 ```
 
 ## Reference implementation
