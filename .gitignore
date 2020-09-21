@@ -4,3 +4,5 @@
 
 # Ignore build directories
 **/target/
+**/build/
+**/node_modules/

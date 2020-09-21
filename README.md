@@ -26,7 +26,7 @@ Implementations are available for:
 
 Implementations are planned also for:
 
-* **Typescript**
+* **Typescript** (under construction)
 * **Rust** (under construction)
 * **Groovy**
 
@@ -102,6 +102,20 @@ No compilation required, as this is a script language.<br>
 To run it from the command prompt, install [Node.js](https://nodejs.org), and run the program from the command line: 
 ```bash
 node shopping-cart.js
+```
+
+### Typescript
+
+Preparation: in the `typescript` directory, fetch the node dependencies (typescript module) once using `npm install`.
+
+Build (compile Typescript to JavaScript, output directory: `build`):
+```bash
+npm run tsc
+```
+
+To run it from the command prompt, install [Node.js](https://nodejs.org), and run the program from the command line: 
+```bash
+node build/main.ts
 ```
 
 ### Rust
