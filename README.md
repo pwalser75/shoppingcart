@@ -118,6 +118,11 @@ To run it from the command prompt, install [Node.js](https://nodejs.org), and ru
 node build/main.ts
 ```
 
+To compile and run (see script `start` in `package.json`);
+```bash
+npm start
+```
+
 ### Rust
 
 Install Rust: https://www.rust-lang.org/tools/install

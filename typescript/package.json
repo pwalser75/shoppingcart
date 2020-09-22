@@ -5,6 +5,7 @@
   "main": "src/main.js",
   "scripts": {
     "tsc": "tsc",
+    "start": "tsc && node build/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
