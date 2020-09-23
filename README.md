@@ -109,14 +109,14 @@ node shopping-cart.js
 
 Preparation: in the `typescript` directory, fetch the node dependencies (typescript module) once using `npm install`.
 
-Build (compile Typescript to JavaScript, output directory: `build`):
+Build (compile Typescript to JavaScript using **Webpack**, output directory: `dist`):
 ```bash
-npm run tsc
+npm run build
 ```
 
 To run it from the command prompt, install [Node.js](https://nodejs.org), and run the program from the command line: 
 ```bash
-node build/main.ts
+node ./dist/bundle.js
 ```
 
 To compile and run (see script `start` in `package.json`);

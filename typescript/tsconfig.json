@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
+    "outDir": "./build",
+    "module": "es6",
     "target": "es6",
+    "sourceMap": true,
+    "noImplicitAny": true,
     "module": "commonjs",
-    "outDir": "build",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "jsx": "react",
+    "allowJs": false
   }
 }
