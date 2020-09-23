@@ -24,6 +24,7 @@ Implementations are available for:
 * [Java](./java) (Java 11)
 * [Kotlin](./kotlin)
 * [Javascript](./javascript) (ECMAScript 6 / 2015)
+* [Typescript](./typescript)
 
 Implementations are planned also for:
 
