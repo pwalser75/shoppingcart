@@ -2,7 +2,7 @@ export abstract class Entity<T> {
 
     constructor(private type: string, public id?: T){}
 
-    public equals(obj: any): boolean {
+    public equals(obj: Entity<T>): boolean {
         if (obj === this) {
             return true;
         }

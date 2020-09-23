@@ -11,6 +11,7 @@ class Product {
         return `${this.name} (id=${this.id}, price=${this.price}/${this.unit})`;
     }
 }
+
 class ShoppingCart {
 
     constructor() {
@@ -46,6 +47,7 @@ class ShoppingCart {
         return `${this.items.length} items in the shopping cart`;
     }
 }
+
 class Checkout {
 
     constructor(exchangeRateService) {
@@ -70,6 +72,7 @@ const Unit = {
     KILOGRAM: 'kg',
     LITER: 'l'
 }
+
 class CurrencyAmount {
 
     constructor(currency, amount) {
@@ -85,6 +88,7 @@ class CurrencyAmount {
         return this.currency + " " + this.amount.toFixed(2);
     }
 }
+
 class ExchangeRateService {
 
     constructor() {
@@ -122,6 +126,7 @@ class ExchangeRateService {
         return exchangeRate;
     }
 }
+
 class Check {
     static required(property, value, ...validators) {
         if (value == null || value == undefined) {

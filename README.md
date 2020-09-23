@@ -11,7 +11,8 @@ Concepts to show (if supported by the language):
 - **Enumeration** data type
 - **Object orientation**
 - **Functional programming**
-- Service contract interface and implementation
+- **Generics**
+- **Interfaces, abstract classes**
 - Calculus with constrained numbers (2-digits precision)
 - Utility functions
 - **Exception handling**
@@ -26,7 +27,6 @@ Implementations are available for:
 
 Implementations are planned also for:
 
-* **Typescript** (under construction)
 * **Rust** (under construction)
 * **Groovy**
 

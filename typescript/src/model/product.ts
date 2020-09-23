@@ -1,11 +1,11 @@
 import {Entity} from './entity'
-import {CurrencyAmount} from './currency.amount'
 import {Unit} from './unit'
+import {CurrencyAmount} from './currencyAmount'
 import {Check} from '../util/check'
 
 export class Product extends Entity<number>{
 
-    constructor(id: number, private name: string, private price: CurrencyAmount, private unit: Unit) {
+    constructor(id: number, public name: string, public price: CurrencyAmount, public unit: Unit) {
         super('Product', id);
         Check.required('id', id);
         Check.required('name', name);
