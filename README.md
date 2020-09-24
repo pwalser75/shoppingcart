@@ -31,6 +31,7 @@ Implementations are available for:
 Implementations are planned also for:
 
 * **Rust** (under construction)
+* **Go** 
 * **Groovy**
 
 ## Domain / Requirements
