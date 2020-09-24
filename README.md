@@ -10,11 +10,13 @@ Concepts to show (if supported by the language):
 - **Composite** data models
 - **Enumeration** data type
 - **Object orientation**
+- **Interfaces, abstract classes**
 - **Functional programming**
 - **Generics**
-- **Interfaces, abstract classes**
-- Calculus with constrained numbers (2-digits precision)
-- Utility functions
+- **Calculations** with constrained numbers (2-digits precision)
+- **Utility functions**
+- **Vararg arguments**
+- **Constructor/Method overloading**
 - **Exception handling**
 
 ## Programming languages
