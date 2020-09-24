@@ -14,6 +14,7 @@ Concepts to show (if supported by the language):
 - **Functional programming**
 - **Generics**
 - **Calculations** with constrained numbers (2-digits precision)
+- **Collections (List/Map)**
 - **Utility functions**
 - **Vararg arguments**
 - **Constructor/Method overloading**
