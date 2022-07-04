@@ -28,6 +28,7 @@ Implementations are available for:
 * [Kotlin](./kotlin)
 * [Javascript](./javascript) (ECMAScript 6 / 2015)
 * [Typescript](./typescript)
+* [Python](./python) (Python 3)
 
 Implementations are planned also for:
 
@@ -126,6 +127,15 @@ node ./dist/bundle.js
 To compile and run (see script `start` in `package.json`);
 ```bash
 npm start
+```
+
+## Python
+
+If not yet preinstalled on your system, download and install Python3 from https://www.python.org/downloads/
+
+To run it from the command prompt:
+```bash
+python3 main.py
 ```
 
 ### Rust
