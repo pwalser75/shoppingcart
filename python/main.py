@@ -17,7 +17,5 @@ if __name__ == '__main__':
         .add(0.450, broccoli) \
         .add(0.163, broccoli)
 
-    exchange_rate_service = ExchangeRateService()
-    checkout = Checkout(exchange_rate_service)
-
+    checkout = Checkout(ExchangeRateService())
     checkout.checkout(shoppingcart)

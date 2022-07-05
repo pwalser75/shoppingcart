@@ -1,9 +1,9 @@
-from util.check import required, has_format, is_number, minimum
+from util.check import required, is_number, minimum, is_currency
 
 
 class CurrencyAmount:
-    def __init__(self, currency, amount):
-        self.currency = required('currency', currency, has_format('^[A-Z]{3}$', 'must be an ISO currency code'))
+    def __init__(self, currency: str, amount: float):
+        self.currency = required('currency', currency, is_currency())
         self.amount = required('amount', amount, is_number(), minimum(0))
 
     def __str__(self):

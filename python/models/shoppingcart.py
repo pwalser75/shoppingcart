@@ -1,3 +1,5 @@
+from models.currencyamount import CurrencyAmount
+from models.product import Product
 from util.check import required, is_number, minimum
 
 
@@ -5,7 +7,7 @@ class ShoppingCart:
     def __init__(self):
         self.items = {}
 
-    def add(self, amount, product):
+    def add(self, amount: CurrencyAmount, product: Product):
         required('amount', amount, is_number(), minimum(0))
         required('product', product)
 
@@ -17,7 +19,7 @@ class ShoppingCart:
             self.items[product] = amount
         return self
 
-    def remove(self, product):
+    def remove(self, product: Product):
         for item in [x for x in self.items.keys() if x.id == product.id]:
             del self.items[item]
         return self

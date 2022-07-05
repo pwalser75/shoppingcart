@@ -1,7 +1,7 @@
 import re
 
 
-def required(property_name, value, *validators):
+def required(property_name: str, value, *validators):
     if value is None:
         raise Exception(f'\'{property_name}\' is required')
     if isinstance(value, str) and len(value) == 0:
@@ -28,3 +28,7 @@ def minimum(min_value):
 
 def has_format(regex, error_message):
     return lambda value: check(value, lambda v: re.match(regex, v), error_message)
+
+
+def is_currency():
+    return has_format('^[A-Z]{3}$', 'must be an ISO currency code')
