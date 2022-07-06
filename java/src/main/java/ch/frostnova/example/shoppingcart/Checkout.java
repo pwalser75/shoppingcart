@@ -6,6 +6,8 @@ import ch.frostnova.example.shoppingcart.model.ShoppingCart;
 import ch.frostnova.example.shoppingcart.service.ExchangeRateService;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Map;
 
 import static ch.frostnova.example.shoppingcart.util.Check.required;
@@ -22,6 +24,8 @@ public class Checkout {
 
     public void checkout(ShoppingCart shoppingCart) {
         required("shoppingCart", shoppingCart);
+
+        System.out.printf("=== JAVA SHOP - %s ===\n", LocalDateTime.now());
 
         var total = ZERO;
         Map<Product, BigDecimal> items = shoppingCart.getItems();

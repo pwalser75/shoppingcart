@@ -13,6 +13,9 @@ export class Checkout {
 
     checkout(shoppingCart: ShoppingCart): void {
         Check.required('shoppingCart', shoppingCart);
+
+        console.log(`=== TYPESCRIPT SHOP - ${new Date()} ===`)
+
         let total = 0;
         for (const product of shoppingCart.items.keys()) {
             const amount = shoppingCart.items.get(product);

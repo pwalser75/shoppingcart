@@ -57,6 +57,9 @@ class Checkout {
 
     checkout(shoppingCart) {
         Check.required('shoppingCart', shoppingCart);
+
+        console.log(`=== JAVASCRIPT SHOP - ${new Date()} ===`)
+
         var total = 0;
         for (var item of shoppingCart.items) {
             var price = new CurrencyAmount(item.product.price.currency, item.amount * item.product.price.amount);

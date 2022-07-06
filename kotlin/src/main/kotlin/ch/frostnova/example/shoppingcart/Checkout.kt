@@ -6,12 +6,15 @@ import ch.frostnova.example.shoppingcart.model.ShoppingCart
 import ch.frostnova.example.shoppingcart.service.ExchangeRateService
 import java.math.BigDecimal
 import java.math.BigDecimal.ZERO
+import java.time.LocalDateTime
 
 class Checkout(private val exchangeRateService: ExchangeRateService) {
 
     private val localCurrency = ExchangeRateService.BASE_CURRENCY
 
     fun checkout(shoppingCart: ShoppingCart) {
+        println("=== KOTLIN SHOP - ${LocalDateTime.now()} ====")
+
         var total = ZERO
         val items: Map<Product, BigDecimal> = shoppingCart.getItems()
         for (product in items.keys) {
